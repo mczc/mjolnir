@@ -5,5 +5,44 @@
   "paginate": {
     "default": 10,
     "max": 50
-  }
+  },
+  "authentication": {
+    "secret": "d95240335ea0164a2c7b8c947aa6f8ad996ecd16dfda5fdb07e1c28a39c6ee259dc0832f1cdebe47129ec7b63a4219f4a82c022f9d5863f26ce0439e490d14048eb8bd0c876ad95328e9844c2ce58c8a0f39adcb7c581bbf9e132252696f638449778985a07bafdd3a817775d5b0f936c4081442f345dbab6bb155f1e62169dd83ec4469d263334efd761bb0089b67106dcf9954e5f29f5262cc9b2c2896f873c7438551200b721d587c0e507dbae13c79e09ad8e45dd69cdea476410a0c168255c150c978cb8481cce2967e2b031702e19befa52d0b25217e3cd77a49c85b6c21b8cbb0754ca212b78072a1920ff281a5c41e2f7c59f9fa7f2923041d7a88b7",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://mczcgroup.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "mongodb": "mongodb+srv://ashish:wzsQO8Tnr7KDvp2i@cluster0-yemuf.mongodb.net/test?retryWrites=true&w=majority"
 }
